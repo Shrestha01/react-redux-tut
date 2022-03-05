@@ -1,0 +1,48 @@
+import logo from "./logo.svg";
+import "./App.css";
+import Home from "./Home";
+import About from "./About";
+import React from "react";
+import Pagenotfound from "./Pagenotfound";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+
+// style in React js
+function App() {
+  const users = [
+    { id: 1, name: "Adarsha", age: 27, email: "adarsha.stha123@gmail.com" },
+    { id: 2, name: "Susmita", age: 22, email: "gangaju.stha123@gmail.com" },
+    { id: 3, name: "Hari", age: 25, email: "hari.stha123@gmail.com" },
+  ];
+
+  return (
+    <div className="App">
+      <h1>home</h1>
+      <Router>
+        {users.map((item) => (
+          <div>
+            <Link to={"/home/" + item.id + item.name}>{item.name}</Link>
+          </div>
+        ))}
+        <Switch>
+          <Route path="/home/:id:name">
+            <Home />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
+  );
+}
+
+export default App;
+
+// <Router>
+//         <Nav>
+//           <Link to="/home">home</Link>
+//           <Link to="/about">About us</Link>
+//         </Nav>
+
+//         <Routes>
+//           <Route path="/home" element={<Home />}></Route>
+//           <Route path="/about" element={<About />}></Route>
+//         </Routes>
+//       </Router>

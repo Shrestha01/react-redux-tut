@@ -1,0 +1,67 @@
+import "./App.css";
+import { Table } from "react-bootstrap";
+
+// style in React js
+function App() {
+  const data = [
+    {
+      name: "adarsha",
+      email: "a@yahoo.com",
+      phone: "098",
+      address: [
+        { house: 2, street: "12 Uriarra Road", country: "Australia" },
+        { house: 2, street: "12 Uriarra Road", country: "Australia" },
+      ],
+    },
+    {
+      name: "susmtia",
+      email: "s@yahoo.com",
+      phone: "123",
+      address: [
+        { house: 2, street: "12 Uriarra Road", country: "Australia" },
+        { house: 2, street: "12 Uriarra Road", country: "Australia" },
+      ],
+    },
+  ];
+  return (
+    <div className="App">
+      <Table striped bordered hover>
+        <thead>
+          <tr>
+            <th>S.Ns</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((items, i) => (
+            <tr>
+              <td>{i + 1}</td>
+              <td>{items.name}</td>
+              <td>{items.email}</td>
+              <td>{items.phone}</td>
+              <td>
+                <Table>
+                  <tbody>
+                    {items.address.map((add) => (
+                      <tr>
+                        <td>{add.house}</td>
+                        <td>{add.street}</td>
+                        <td>{add.country}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </Table>
+              </td>
+            </tr>
+          ))}
+          <tr></tr>
+        </tbody>
+      </Table>
+    </div>
+  );
+}
+
+export default App;

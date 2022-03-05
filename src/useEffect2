@@ -1,0 +1,56 @@
+import logo from "./logo.svg";
+import "./App.css";
+import User from "./User";
+import React, { useState, useEffect } from "react";
+
+function App() {
+  const [data, setData] = useState(10);
+  const [data1, setData1] = useState(20);
+
+  useEffect(() => {
+    console.log("useEffect runned");
+  }, [data]);
+
+  return (
+    <div className="App">
+      <h1>data: {data}</h1>
+      <h1>data: {data1}</h1>
+      <button
+        onClick={() => {
+          setData(data + 1);
+        }}
+      >
+        data
+      </button>
+      <button
+        onClick={() => {
+          setData1(data1 + 1);
+        }}
+      >
+        data1 button
+      </button>
+    </div>
+  );
+}
+
+export default App;
+
+import React from "react";
+import { useEffect } from "react";
+
+function User(props) {
+  useEffect(() => {
+    alert("cliked" + props.data);
+  }, [props.data]);
+  useEffect(() => {
+    console.log("clicked" + props.data1);
+  }, [props.data1]);
+  return (
+    <div>
+      <h1>{props.data}</h1>
+      <h1>{props.data1}</h1>
+    </div>
+  );
+}
+
+export default User;
